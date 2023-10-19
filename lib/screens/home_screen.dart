@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   var newsType = NewsType.allNews;
   int currentPageIndex = 0;
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,14 +27,14 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           _categoryWidget(),
-          newsType == NewsType.topTrending
-              ? Container()
-              : _pageNavigation()
+          newsType == NewsType.topTrending ? Container() : _pageNavigation(),
+
         ],
       ),
     );
   }
-_pageNavigation(){
+
+  _pageNavigation() {
     return SizedBox(
       height: kBottomNavigationBarHeight,
       child: Row(
@@ -69,10 +70,13 @@ _pageNavigation(){
                       child: Center(
                         child: Padding(
                           padding: EdgeInsets.all(8.0.w),
-                          child: Text((index + 1).toString(),
+                          child: Text(
+                            (index + 1).toString(),
                             style: TextStyle(
-                                color: currentPageIndex ==index ? Colors.white:Colors.black
-                            ),),
+                                color: currentPageIndex == index
+                                    ? Colors.white
+                                    : Colors.black),
+                          ),
                         ),
                       ),
                     ),
@@ -93,8 +97,9 @@ _pageNavigation(){
               }),
         ],
       ),
-    ) ;
-}
+    );
+  }
+
   _appBar() {
     Color color = Utils(context).getColor;
 
