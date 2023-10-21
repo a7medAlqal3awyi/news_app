@@ -7,6 +7,8 @@ import 'package:news_app/widgets/custom_button.dart';
 import 'package:news_app/widgets/drower_widget.dart';
 import 'package:news_app/widgets/tap_widget.dart';
 
+import '../widgets/droped_down_widget.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -18,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
   var newsType = NewsType.allNews;
   int currentPageIndex = 0;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           _categoryWidget(),
           newsType == NewsType.topTrending ? Container() : _pageNavigation(),
-
+          const VerticalDivider(),
+          newsType == NewsType.topTrending
+              ? Container()
+              : const DropDownWidget(),
         ],
       ),
     );
