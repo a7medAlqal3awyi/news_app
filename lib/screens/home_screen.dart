@@ -6,9 +6,9 @@ import 'package:news_app/consts/vars.dart';
 import 'package:news_app/services/utils.dart';
 import 'package:news_app/widgets/custom_button.dart';
 import 'package:news_app/widgets/drower_widget.dart';
+import 'package:news_app/widgets/loading_widget.dart';
 import 'package:news_app/widgets/tap_widget.dart';
 
-import '../widgets/artical_widget.dart';
 import '../widgets/droped_down_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           newsType == NewsType.topTrending
               ? Container()
               : const DropDownWidget(),
-          const ArticleWidget(),
+          const LoadingWidget(),
         ]));
   }
 
