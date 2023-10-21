@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/consts/vars.dart';
 import 'package:news_app/services/utils.dart';
 import 'package:news_app/widgets/custom_button.dart';
 import 'package:news_app/widgets/drower_widget.dart';
 import 'package:news_app/widgets/tap_widget.dart';
 
+import '../widgets/artical_widget.dart';
 import '../widgets/droped_down_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,19 +25,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
-      drawer: const DrawerWidget(),
-      body: Column(
-        children: [
+        appBar: _appBar(),
+        drawer: const DrawerWidget(),
+        body: Column(children: [
           _categoryWidget(),
           newsType == NewsType.topTrending ? Container() : _pageNavigation(),
           const VerticalDivider(),
           newsType == NewsType.topTrending
               ? Container()
               : const DropDownWidget(),
-        ],
-      ),
-    );
+          const ArticleWidget(),
+        ]));
   }
 
   _pageNavigation() {
@@ -112,7 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
         iconTheme: IconThemeData(color: color),
         title: Text(
           "News app",
-          style: TextStyle(fontSize: 20.sp, letterSpacing: .6, color: color),
+          style: GoogleFonts.abrilFatface(
+              fontSize: 20.sp, letterSpacing: .6, color: color
+          )
+
         ),
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
