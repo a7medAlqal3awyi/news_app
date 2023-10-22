@@ -1,15 +1,17 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/consts/vars.dart';
 import 'package:news_app/services/utils.dart';
+import 'package:news_app/widgets/artical_widget.dart';
 import 'package:news_app/widgets/custom_button.dart';
 import 'package:news_app/widgets/drower_widget.dart';
-import 'package:news_app/widgets/loading_widget.dart';
 import 'package:news_app/widgets/tap_widget.dart';
 
 import '../widgets/droped_down_widget.dart';
+import '../widgets/top_trending_wiget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -34,7 +36,19 @@ class _HomeScreenState extends State<HomeScreen> {
           newsType == NewsType.topTrending
               ? Container()
               : const DropDownWidget(),
-          const LoadingWidget(),
+          if (newsType == NewsType.allNews) const ArticleWidget(),
+          if (newsType == NewsType.topTrending)
+            SizedBox(
+              height: 400.h,
+              child: Swiper(
+                itemWidth: 300.0,
+                autoplay: true ,
+                autoplayDelay: 5000,
+                layout: SwiperLayout.STACK,
+                itemCount: 10,
+                itemBuilder: (context, index) => const TopTrendingWidget(),
+              ),
+            )
         ]));
   }
 
@@ -110,13 +124,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: color),
-        title: Text(
-          "News app",
-          style: GoogleFonts.abrilFatface(
-              fontSize: 20.sp, letterSpacing: .6, color: color
-          )
-
-        ),
+        title: Text("News app",
+            style: GoogleFonts.abrilFatface(
+                fontSize: 20.sp, letterSpacing: .6, color: color)),
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         actions: [

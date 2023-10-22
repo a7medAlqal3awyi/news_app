@@ -12,6 +12,7 @@ class ArticleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
+        shrinkWrap: true,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.all(8.h),
           child: Material(
