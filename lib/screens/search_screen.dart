@@ -44,7 +44,8 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             _searchAppBar(),
             const VerticalSpace(height: 10),
-            _keywordHelper()
+            _keywordHelper(),
+
           ],
         ),
       ),
