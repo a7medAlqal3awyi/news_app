@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         iconTheme: IconThemeData(color: color),
         title: Text("News app",
-            style: GoogleFonts.abrilFatface(
+            style: GoogleFonts.lobster(
                 fontSize: 20.sp, letterSpacing: .6, color: color)),
         elevation: 0,
         backgroundColor: Theme

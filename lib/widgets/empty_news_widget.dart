@@ -18,6 +18,7 @@ class EmptyNewsWidget extends StatelessWidget {
           ),
           Text(
             title,
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight:FontWeight.bold,
               fontSize: 24.sp
