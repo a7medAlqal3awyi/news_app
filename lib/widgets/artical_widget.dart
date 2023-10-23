@@ -68,19 +68,10 @@ class ArticleWidget extends StatelessWidget {
                                 style: smallTextStyle,
                               ),
                               const VerticalSpace(height: 5),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  const Icon(
-                                    Icons.watch_later_outlined,
-                                    size: 25,
-                                  ),
-                                  SizedBox(
-                                    width: 5.w,
-                                  ),
-                                  const Text("Reading time ")
-                                ],
-                              ),
+                              Align(
+                                alignment: Alignment.topRight,
+                                  child:  Text(" 🕒  Reading time",
+                                  style: smallTextStyle ,)),
                               FittedBox(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,

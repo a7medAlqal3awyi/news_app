@@ -4,11 +4,13 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/consts/vars.dart';
+import 'package:news_app/screens/search_screen.dart';
 import 'package:news_app/services/utils.dart';
 import 'package:news_app/widgets/artical_widget.dart';
 import 'package:news_app/widgets/custom_button.dart';
 import 'package:news_app/widgets/drower_widget.dart';
 import 'package:news_app/widgets/tap_widget.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../widgets/droped_down_widget.dart';
 import '../widgets/top_trending_wiget.dart';
@@ -39,10 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
           if (newsType == NewsType.allNews) const ArticleWidget(),
           if (newsType == NewsType.topTrending)
             SizedBox(
-              height: 400.h,
+              height: 370.h,
               child: Swiper(
-                itemWidth: 300.0,
-                autoplay: true ,
+                itemWidth: 300.w,
+                autoplay: true,
+                viewportFraction: .9,
                 autoplayDelay: 5000,
                 layout: SwiperLayout.STACK,
                 itemCount: 10,
@@ -77,7 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Material(
                     color: currentPageIndex == index
                         ? Colors.blue
-                        : Theme.of(context).cardColor,
+                        : Theme
+                        .of(context)
+                        .cardColor,
                     child: InkWell(
                       onTap: () {
                         setState(() {
@@ -128,10 +133,21 @@ class _HomeScreenState extends State<HomeScreen> {
             style: GoogleFonts.abrilFatface(
                 fontSize: 20.sp, letterSpacing: .6, color: color)),
         elevation: 0,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Theme
+            .of(context)
+            .scaffoldBackgroundColor,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.rightToLeft,
+                    child: const SearchScreen(),
+                    inheritTheme: true,
+                    ctx: context),
+              );
+            },
             icon: const Icon(IconlyLight.search),
           ),
         ]);
@@ -144,7 +160,9 @@ class _HomeScreenState extends State<HomeScreen> {
           text: "All news",
           fontSize: newsType == NewsType.allNews ? 20 : 14.sp,
           color: newsType == NewsType.allNews
-              ? Theme.of(context).cardColor
+              ? Theme
+              .of(context)
+              .cardColor
               : Colors.transparent,
           onTap: () {
             if (newsType == NewsType.allNews) {
@@ -160,7 +178,9 @@ class _HomeScreenState extends State<HomeScreen> {
           text: "Top trending",
           fontSize: newsType == NewsType.topTrending ? 20 : 14.sp,
           color: newsType == NewsType.topTrending
-              ? Theme.of(context).cardColor
+              ? Theme
+              .of(context)
+              .cardColor
               : Colors.transparent,
           onTap: () {
             if (newsType == NewsType.topTrending) {

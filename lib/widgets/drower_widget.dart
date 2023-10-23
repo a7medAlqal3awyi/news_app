@@ -58,7 +58,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             ),
              Divider(thickness: 3.h,),
             SwitchListTile(
-              title:  Text(themeProvider.getDarkTheme? "Dark":"Light",
+              title:  Text(themeProvider.getDarkTheme? 'Dark':'Light',
               style: TextStyle(fontSize: 20.sp),),
               secondary: Icon(
                   themeProvider.getDarkTheme? Icons.dark_mode:Icons.light_mode,
