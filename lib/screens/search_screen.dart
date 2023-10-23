@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:news_app/widgets/vertical_space.dart';
 
+import '../consts/vars.dart';
 import '../services/utils.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -13,15 +17,17 @@ class _SearchScreenState extends State<SearchScreen> {
 
   late TextEditingController _searchTextController;
   late FocusNode focusNode;
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _searchTextController =TextEditingController();
-    focusNode =FocusNode();
+    _searchTextController = TextEditingController();
+    focusNode = FocusNode();
   }
+
   @override
-  void dispose () {
-    if(mounted){
+  void dispose() {
+    if (mounted) {
       _searchTextController.dispose();
       focusNode.dispose();
     }
@@ -36,53 +42,84 @@ class _SearchScreenState extends State<SearchScreen> {
         backgroundColor: Colors.white,
         body: Column(
           children: [
-            _searchAppBar()
-
+            _searchAppBar(),
+            const VerticalSpace(height: 10),
+            _keywordHelper()
           ],
         ),
       ),
     );
   }
-  _searchAppBar(){
+
+  _searchAppBar() {
     Color color = Utils(context).getColor;
 
-    return  TextFormField(
-      onTapOutside: (event){
+    return TextFormField(
+      onTapOutside: (event) {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       focusNode: focusNode,
-      controller:_searchTextController ,
-      autofocus: true ,
-      style: TextStyle(color: color ),
+      controller: _searchTextController,
+      autofocus: true,
+      style: TextStyle(color: color),
       textInputAction: TextInputAction.search,
       decoration: InputDecoration(
           prefixIcon: IconButton(
-            onPressed: (){
+            onPressed: () {
               focusNode.unfocus();
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.arrow_back_ios_new,
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
               size: 18,
-              color: Colors.grey,),
+              color: Colors.grey,
+            ),
           ),
           suffixIcon: IconButton(
-            onPressed: (){
+            onPressed: () {
               _searchTextController.clear();
               focusNode.unfocus();
-              setState(() {
-
-              });
+              setState(() {});
             },
-            icon: const Icon(Icons.close ,
+            icon: const Icon(
+              Icons.close,
               size: 18,
-              color: Colors.red,),
+              color: Colors.red,
+            ),
           ),
           hintText: "Search",
-          border: const OutlineInputBorder(
-              borderSide: BorderSide.none
-          )
-      ),
+          border: const OutlineInputBorder(borderSide: BorderSide.none)),
     );
   }
 
+  _keywordHelper() {
+    Color color = Utils(context).getColor;
+
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: MasonryGridView.count(
+          crossAxisCount: 4,
+          mainAxisSpacing: 4,
+          crossAxisSpacing: 4,
+          itemCount: searchKeys.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: color,
+                  ),
+                  borderRadius: BorderRadius.circular(30.w),
+                ),
+                child: Padding(
+                    padding: EdgeInsets.all(8.w),
+                    child: Center(child: Text("${searchKeys[index]}"))),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
 }

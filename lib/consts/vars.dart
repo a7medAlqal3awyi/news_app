@@ -10,3 +10,13 @@ TextStyle smallTextStyle = GoogleFonts.lato(
   fontSize: 15.sp,
   height: 1.5,
 );
+
+List<String> searchKeys=[
+  "Gaza",
+  "Palastine",
+  "Flutter",
+  "Weather",
+  "Python",
+  "Wars",
+  "Football",
+];
