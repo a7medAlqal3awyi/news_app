@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:news_app/widgets/vertical_space.dart';
 
-import '../consts/vars.dart';
-import '../services/utils.dart';
+import '../../core/consts/vars.dart';
+import '../../services/utils.dart';
+import '../widgets/vertical_space.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -115,7 +115,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 child: Padding(
                     padding: EdgeInsets.all(8.w),
-                    child: Center(child: Text("${searchKeys[index]}"))),
+                    child: Center(child: Text(searchKeys[index]))),
               ),
             );
           },

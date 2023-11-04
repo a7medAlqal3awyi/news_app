@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:news_app/consts/vars.dart';
-import 'package:news_app/screens/search_screen.dart';
-import 'package:news_app/services/utils.dart';
-import 'package:news_app/widgets/artical_widget.dart';
-import 'package:news_app/widgets/custom_button.dart';
-import 'package:news_app/widgets/drower_widget.dart';
-import 'package:news_app/widgets/tap_widget.dart';
-import 'package:page_transition/page_transition.dart';
 
+import 'package:news_app/presentation/screens/search_screen.dart';
+import 'package:news_app/services/utils.dart';
+import 'package:page_transition/page_transition.dart';
+import '../../core/consts/vars.dart';
+import '../widgets/artical_widget.dart';
+
+import '../widgets/custom_button.dart';
 import '../widgets/droped_down_widget.dart';
+import '../widgets/drower_widget.dart';
+import '../widgets/tap_widget.dart';
 import '../widgets/top_trending_wiget.dart';
 
 class HomeScreen extends StatefulWidget {

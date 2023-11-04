@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/providers/theme_providers.dart';
-import 'package:news_app/screens/home_screen.dart';
-import 'package:news_app/styles/theme_data.dart';
+import 'package:news_app/presentation/screens/home_screen.dart';
+import 'package:news_app/core/themes/theme_providers.dart';
 import 'package:provider/provider.dart';
+
+import 'core/styles/theme_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,9 +54,7 @@ class _MyAppState extends State<MyApp> {
                   theme:
                   Styles.themeData(themeChangeProvider.getDarkTheme, context),
                   home: const HomeScreen(),
-                  routes: {
-                    // NewsDetailsScreen.routeName: (ctx) => const NewsDetailsScreen(),
-                  },
+
                 ) ;
               },
             );

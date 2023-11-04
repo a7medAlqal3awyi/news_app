@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../services/dark_theme_preferences.dart';
+import 'dark_theme_preferences.dart';
+
 
 
 class ThemeProvider with ChangeNotifier {
